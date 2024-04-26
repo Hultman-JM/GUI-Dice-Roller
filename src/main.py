@@ -1,4 +1,12 @@
+# Main.py
+
+from tkinter import Tk
+from gui.dice_roller_app import DiceRollerApp
 
 def main():
-    pass
-main()
+    root = Tk()
+    app = DiceRollerApp(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
