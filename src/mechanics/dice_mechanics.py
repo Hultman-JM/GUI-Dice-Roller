@@ -43,50 +43,50 @@ class DiceRoller:
         self.type = "d100"
         self.value = random.randint(1,100)
 
-
-#TODO a new class or data type for attack rolls and skill checks 
-#and i can move some of the handling for the roll modifiers.
-
-class ModifierHandler:
-    
     # Logic for applying a modifier to the roll
-    def apply_modifier(self, roll, modifier):
-        return roll + modifier
+    def apply_modifier(self, value, modifier):
+        return value + modifier
+    
+    # Roll a collection of dice and return a list of the dice
+    def roll_dice(self, num_to_roll, roll_function):
+        dice_list = []
+        for i in range(1, num_to_roll):
+            dice_roll = roll_function()
+            dice_list.append(dice_roll)
+        return dice_list
+    
+    # Special mechanics:
 
-    # Logic for advantage/disadvantage rolls where roll_results a list of length 1 or 2 of "d20" type
-    def handle_advantage_disadvantage(self, rolls, advantage=False, disadvantage=False):
+    # Reroll a number of dice?
+    def reroll(self, roll_function, rolls_to_reroll):
+        new_rolls = []
+        for roll in rolls_to_reroll:
+            new_roll = roll_function()
+            new_rolls.append(new_roll)
+        return new_rolls
+    
+    # Advantaged roll: take highest from a collection of rolls
+    def roll_advantage(self, rolls):
+        return max(rolls)
+    
+    # Disadvantaged roll: take lowest from a collection of rolls
+    def roll_disadvantage(self, rolls):
+        return min(rolls)
+    
+    # Apply modifier to each roll in a collection then total
+    def modify_each_roll(self, rolls, modifier):
+        total = 0
+        for roll in rolls:
+            modified_roll = self.apply_modifier(roll, modifier)
+            total += modified_roll
+        return total
 
-        #check to see if there are only 1 or 2 rolls in the list
-        if len(rolls) > 0 and len(rolls) < 2:
-            for roll in rolls:
-                #check to see if each roll is a d20 if not raise an exception
-                if roll.type != "d20":
-                    raise Exception(f"{roll.type} cannot be rolled with advantage or disadvantage")
-            #if only 1 roll return that value
-            if len(rolls) == 1:
-                return rolls[0]
-            #else there are 2 rolls we need to check the flags
-            else:
-                #handle advantage logic
-                if advantage == True and disadvantage == False:
-                    #choose higher roll
-                    return max(rolls[0], rolls[1])
-                #handle disadvantage logic
-                elif disadvantage == True and advantage == False:
-                    #choose lower roll
-                    return min(rolls[0], rolls[1])
-                else:
-                    raise Exception("disadvantage and advantage flags must be different")
-            
-
-    # Logic for critical_hits
-    def handle_critical_hits(self, roll):
-        if roll.type == "d20":
-            pass
-        else:
-            raise Exception(f"{roll.type} cannot crit")
-
-    # Logic for fumbles
-    def handle_fumbles(self, roll):
-        pass
+    # Apply modifier to the total of a collection
+    def modify_total(self, rolls, modifier):
+        total = 0
+        for roll in rolls:
+            total += roll
+        modified_total = self.apply_modifier(total, modifier)
+        return modified_total
+    
     

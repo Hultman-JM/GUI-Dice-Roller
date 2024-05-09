@@ -1,22 +1,71 @@
-## GUI-Dice-Roller-for-D-D-5e
-This project is a graphical user interface (GUI) application built using Tkinter in Python. It serves as a convenient tool for tabletop role-playing game (TTRPG) enthusiasts, specifically those who play Dungeons & Dragons 5th Edition (D&D 5e). The GUI Dice Roller allows users to simulate dice rolls commonly used in D&D 5e gameplay, such as rolling a d20 for skill checks, attack rolls, or saving throws. Additionally, the application supports modifiers and special mechanics unique to D&D 5e, such as advantage/disadvantage rolls and critical hits/fumbles. The primary goal of the project is to provide a user-friendly interface for rolling dice and resolving game mechanics, making it easier for players to engage in immersive TTRPG experiences without the need for physical dice.
+## Project Title: Generalized Tabletop Dice Roller with GUI
 
-# Project Requirements: GUI Dice Roller for D&D 5e
+# Description:
 
-1. Functionality: Implement a graphical user interface (GUI) application using Tkinter in Python that allows users to simulate dice rolls for Dungeons & Dragons 5th Edition (D&D 5e).
+The Generalized Tabletop Dice Roller with GUI is a versatile command-line tool designed to facilitate dice rolling for various tabletop games, including role-playing games (RPGs), wargames, board games, and more. It allows users to roll different types of dice, apply modifiers, and handle special mechanics such as advantage, disadvantage, critical hits, and fumbles, all within an intuitive graphical user interface.
 
-2. Dice Rolling: Develop functionality to simulate rolling a variety of dice commonly used in D&D 5e gameplay, including d4, d6, d8, d10, d12, and d20.
+# Why the Change in Scope?
 
-3. Modifiers: Allow users to input modifiers (e.g., bonuses/penalties) before rolling dice and incorporate them into the final result.
+Originally conceived as a specialized dice roller tailored to Dungeons & Dragons 5th Edition (D&D 5e), the project's scope has been expanded to create a more generalized tool with broader applicability while retaining the GUI aspect. This decision was motivated by several factors:
 
-4. Special Mechanics: Support special mechanics unique to D&D 5e, such as advantage/disadvantage rolls and critical hits/fumbles.
+1. Scalability: A generalized dice roller offers greater scalability, allowing for potential integration with a wider range of tabletop games beyond D&D 5e. This enhances the tool's utility and appeal to a broader audience of tabletop gaming enthusiasts.
 
-5. User Interface: Design a user-friendly interface with intuitive controls for selecting dice types, inputting modifiers, and displaying results.
+2. Flexibility: By accommodating various types of dice, modifiers, and mechanics, the generalized dice roller provides users with greater flexibility to customize their gaming experience according to the rules and mechanics of different games.
 
-6. Customization Options: Provide options for users to customize the dice roller, such as selecting different dice sets, adjusting modifiers, and saving/loading presets.
+3. Usability: The inclusion of a graphical user interface enhances the usability and accessibility of the tool, making it more intuitive and user-friendly for players of all experience levels.
 
-7. Error Handling: Implement robust error handling and validation to ensure accurate results and handle edge cases gracefully.
+4. Learning Opportunity: Embracing a more generalized scope, while incorporating GUI development, provides an opportunity to explore and implement a wider array of features and functionalities, thereby enhancing learning and skill development in software development and project management.
 
-8. Documentation: Write clear and comprehensive documentation for the project, including instructions for users on how to use the GUI dice roller and any additional features.
 
-9. Testing: Test the application thoroughly to ensure functionality and reliability under various scenarios and edge cases.
+# Project Requirements:
+
+1. Functionality:
+    - Implement core functionality for rolling dice of different types (e.g., d4, d6, d8, d10, d12, d20, d100).
+    - Support modifiers such as bonuses, penalties, and multipliers.
+    - Integrate a graphical user interface (GUI) for intuitive interaction with the tool.
+    - Ensure seamless integration between GUI components and core functionality.
+
+2. Scalability:
+    - Design the tool to be adaptable and scalable for potential integration with a wide range of tabletop games.
+    - Allow users to customize dice rolls, modifiers, and mechanics according to the rules and mechanics of different games.
+    - Maintain flexibility to accommodate future updates and enhancements.
+
+3. Usability:
+    - Develop an intuitive and user-friendly graphical user interface (GUI) for seamless interaction with the tool.
+    - Provide clear instructions and tooltips within the GUI to guide users on how to navigate and use the tool effectively.
+    - Conduct usability testing to gather feedback from users and iterate on the design to enhance usability and accessibility.
+
+4. Documentation:
+    - Create comprehensive documentation, including a README.md file, to provide an overview of the tool, installation instructions, usage guidelines, and examples.
+    - Update the documentation to reflect any changes in scope or functionality and to address user feedback and suggestions.
+    - Ensure that the documentation is clear, concise, and accessible to users of all experience levels.
+
+# GUI layout concept will be removed:
+---------------------------------------------
+|                Dice Roller                |
+---------------------------------------------
+|                                           |
+|  +-------+--------------+----------------+|
+|  | Num   |   Dice       |   Modifier     ||
+|  | of    |   Selection  |   Input        ||
+|  | Dice  |              |                ||
+|  +-------+--------------+----------------+|
+|                                           |
+|  +--------------------------+             |
+|  |     Special Mechanics    |             |
+|  +--------------------------+             |
+|                                           |
+|  +--------------------------+             |
+|  |       Roll Button        |             |
+|  +--------------------------+             |
+|                                           |
+|  +--------------------------+             |
+|  |       Result Display     |             |
+|  |                          |             |
+|  |                          |             |
+|  |                          |             |
+|  |                          |             |
+|  +--------------------------+             |
+|                                           |
+---------------------------------------------
+![GUI concept](GUI_concept.png)
