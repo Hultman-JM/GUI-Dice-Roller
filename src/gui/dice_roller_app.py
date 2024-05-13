@@ -63,6 +63,27 @@ class DiceRollerApp:
         # Create roll button
         roll_button = Button(self.root, text="Roll Dice", command=self.roll_dice)
         roll_button.pack()
+        rolls = roll_button.get()
+
+        
+        # Get the modifier from the entry field
+        modifier = int(self.modifier_entry.get())
+        
+        # Apply selected roll mechanic rules to the results of the rolls
+
+        # Apply the selected modifier mechanic rules to the results of the rolls
+        
+        # Display results of the roll
+
+        # If reroll is selected
+        if self.reroll_var == "Reroll":
+            # let the user select dice in the previous roll to reroll
+            rolls_to_reroll = []
+
+            # Display a reroll button after the results of the previous roll is displayed, and the dice to reroll are selected
+            reroll_button = Button(self.root, text="Reroll", command=DiceRoller.reroll(self.selected_die_type.get(), rolls_to_reroll))
+            reroll_button.pack()
+            new_rolls = reroll_button.get()
         
 
     # Text input for num of Dice
@@ -101,9 +122,10 @@ class DiceRollerApp:
 
         # Advantage and Disadvantage options
         self.advantage_disadvantage_var = StringVar()
+        self.normal_roll_button = Radiobutton(self.root, text="Normal", variable=self.advantage_disadvantage_var, value="Normal")
+        self.normal_roll_button.pack()
         self.advantage_button = Radiobutton(self.root, text="Advantage", variable=self.advantage_disadvantage_var, value="Advantage")
         self.advantage_button.pack()
-
         self.disadvantage_button = Radiobutton(self.root, text="Disadvantage", variable=self.advantage_disadvantage_var, value="Disadvantage")
         self.disadvantage_button.pack()
 
@@ -126,14 +148,10 @@ class DiceRollerApp:
         # Get die type selection and roll function
         die_type = self.selected_die_type.get()
         roll_function = self.roll_functions[die_type]
-
-        # Get the modifier from the entry field
-        modifier = int(self.modifier_entry.get())
         
         # Call Roll Dice to get the collection of rolls
         rolls = DiceRoller.roll_dice(num_dice, roll_function)
+        return rolls
 
-        # Apply selection of mechanics to obtain the results of the rolls
-        reroll_flag = self.reroll_var.get()
 
         
