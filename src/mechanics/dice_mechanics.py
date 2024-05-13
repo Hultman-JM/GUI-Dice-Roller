@@ -73,15 +73,23 @@ class DiceRoller:
     def roll_disadvantage(self, rolls):
         return min(rolls)
     
-    # Apply modifier to each roll in a collection then total
+    # Apply modifier to each roll in a collection then return the collection
     def modify_each_roll(self, rolls, modifier):
+        moded_rolls = []
+        for roll in rolls:
+            modified_roll = self.apply_modifier(roll, modifier)
+            moded_rolls.append(modified_roll)
+        return moded_rolls
+    
+    # Apply modifier to each roll in a collection then total
+    def modify_each_roll_and_total(self, rolls, modifier):
         total = 0
         for roll in rolls:
             modified_roll = self.apply_modifier(roll, modifier)
             total += modified_roll
         return total
 
-    # Apply modifier to the total of a collection
+    # Apply modifier to the total of a collection of rolls
     def modify_total(self, rolls, modifier):
         total = 0
         for roll in rolls:
